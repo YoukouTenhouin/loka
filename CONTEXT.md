@@ -37,3 +37,16 @@ The configured pool that supplies the machine's persistent default boot environm
 
 **Next-boot selection**:
 A choice of boot environment for the next boot only, distinct from changing the persistent default.
+
+**Environment snapshot**:
+A named checkpoint of a boot environment's root dataset and every private descendant, captured together. A snapshot of a running environment is crash-consistent and does not promise application consistency.
+_Avoid_: checkpoint (as a separate concept)
+
+**Environment rollback**:
+Restoring snapshot contents in a boot environment's remaining datasets, including when it is the current boot environment. Rollback does not reconstruct historical dataset membership or names after manual topology changes.
+
+**Environment clone**:
+A distinct boot environment created from an environment snapshot, with its own identity and private members. Its members may depend on origin snapshots belonging to another environment.
+
+**Environment promotion**:
+An explicit change to an environment's clone-origin relationships that reverses dependencies and transfers ownership of affected snapshot history. Promotion does not imply independence from every ancestor.
