@@ -1,0 +1,3 @@
+# Infer private membership from dataset subtrees
+
+Boot environments are discovered as immediate children of explicitly designated, non-overlapping environment containers, which may span multiple pools; each environment consists of its root dataset and all descendants, managed together as one unit. Shared datasets must live outside every environment subtree: we choose this layout constraint over explicit membership lists to make membership inferable without exceptions or stale registrations. Consequently, homes beneath an environment root participate in its lifecycle; users who want independent home data must move it outside the subtree before adoption.
